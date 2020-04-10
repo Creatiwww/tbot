@@ -17,9 +17,9 @@ def respond():
     msg_id = update.message.message_id
 
     # Telegram understands UTF-8, so encode text for unicode compatibility
-    mssg = update.message.text.encode('utf-8').decode()
+    # mssg = update.message.text.encode('utf-8').decode()
 
-    bot.sendMessage(chat_id=chat_id, text=mssg, reply_to_message_id=msg_id)
+    bot.sendMessage(chat_id=chat_id, text="hello", reply_to_message_id=msg_id)
 
     return 'ok'
 
