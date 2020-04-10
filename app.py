@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
-	 logger.debug("From: %s\nchat_id: %d\nText: %s" %
+	logger.debug("From: %s\nchat_id: %d\nText: %s" %
                 (update.message.from_user,
                  update.message.chat_id,
                  update.message.text))
