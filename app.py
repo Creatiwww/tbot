@@ -18,7 +18,7 @@ def respond():
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def index():
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
