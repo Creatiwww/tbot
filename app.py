@@ -52,4 +52,5 @@ def index():
 
 
 if __name__ == '__main__':
+    print('logss')
     app.run(threaded=True)
