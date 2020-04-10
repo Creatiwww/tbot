@@ -4,7 +4,6 @@ import os
 
 TOKEN = os.environ['TOKEN']
 bot = telegram.Bot(token=TOKEN)
-URL = os.environ['URL']
 
 app = Flask(__name__)
 
@@ -16,7 +15,7 @@ def respond():
     msg_id = update.message.message_id
     text = update.message.text.encode('utf-8').decode()
     bot.sendMessage(chat_id=chat_id, text="Hi there!", reply_to_message_id=msg_id)
-    return 'ok'
+    return TOKEN
 
 
 if __name__ == '__main__':
