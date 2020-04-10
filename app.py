@@ -48,6 +48,7 @@ def respond():
 
 @app.route('/', methods=['POST'])
 def index():
+	print('logss')
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 
