@@ -24,10 +24,10 @@ app = Flask(__name__)
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
-	logger.debug("From: %s\nchat_id: %d\nText: %s" %
-                (update.message.from_user,
-                 update.message.chat_id,
-                 update.message.text))
+	# logger.debug("From: %s\nchat_id: %d\nText: %s" %
+ #                (update.message.from_user,
+ #                 update.message.chat_id,
+ #                 update.message.text))
 
     update = telegram.Update.de_json(request.get_json(force=True), bot)
 
@@ -39,7 +39,7 @@ def respond():
     # mssg = update.message.text.encode('utf-8').decode()
 
 	# msg = update.message.text.encode('utf-8').decode()
-    bot.sendMessage(chat_id=chat_id, text="msg", reply_to_message_id=msg_id)
+    bot.sendMessage(chat_id=chat_id, text="msg")
 
     return 'ok'
 
