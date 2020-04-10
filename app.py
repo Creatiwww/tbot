@@ -4,13 +4,6 @@ import os
 import json
 import logging
 
-# Enable Logging
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO)
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
 global TOKEN 
 TOKEN = '1135698268:AAEipBbNjrsXeTQwjhf8M9TzJL0ADHAvFho'
 # TOKEN = os.environ['TOKEN']
@@ -24,18 +17,11 @@ app = Flask(__name__)
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
-    logger.debug("From: %s\nchat_id: %d\nText: %s" %
-                (update.message.from_user,
-                update.message.chat_id,
-                update.message.text))
-
+    print('enter respond fun')
     update = telegram.Update.de_json(request.get_json(force=True), bot)
 
     chat_id = update.message.chat.id
     msg_id = update.message.message_id
-    print('logss')
-    print("chat_id:", chat_id)
-    sys.stdout.flush()
 
     # Telegram understands UTF-8, so encode text for unicode compatibility
     # mssg = update.message.text.encode('utf-8').decode()
@@ -53,5 +39,4 @@ def index():
 
 
 if __name__ == '__main__':
-    print('logss')
     app.run(threaded=True)
