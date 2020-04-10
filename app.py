@@ -6,8 +6,8 @@ import logging
 
 # Enable Logging
 logging.basicConfig(
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        level=logging.INFO)
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
@@ -24,10 +24,10 @@ app = Flask(__name__)
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
-	# logger.debug("From: %s\nchat_id: %d\nText: %s" %
- #                (update.message.from_user,
- #                 update.message.chat_id,
- #                 update.message.text))
+    logger.debug("From: %s\nchat_id: %d\nText: %s" %
+                (update.message.from_user,
+                update.message.chat_id,
+                update.message.text))
 
     update = telegram.Update.de_json(request.get_json(force=True), bot)
 
@@ -38,7 +38,7 @@ def respond():
     # Telegram understands UTF-8, so encode text for unicode compatibility
     # mssg = update.message.text.encode('utf-8').decode()
 
-	# msg = update.message.text.encode('utf-8').decode()
+    # msg = update.message.text.encode('utf-8').decode()
     bot.sendMessage(chat_id=chat_id, text="msg")
 
     return 'ok'
