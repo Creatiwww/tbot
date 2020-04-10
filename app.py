@@ -2,6 +2,14 @@ from flask import Flask, request
 import telegram
 import os
 import json
+import logging
+
+# Enable Logging
+logging.basicConfig(
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 global TOKEN 
 TOKEN = '1135698268:AAEipBbNjrsXeTQwjhf8M9TzJL0ADHAvFho'
@@ -9,11 +17,18 @@ TOKEN = '1135698268:AAEipBbNjrsXeTQwjhf8M9TzJL0ADHAvFho'
 global bot 
 bot = telegram.Bot(token=TOKEN)
 
+
+
 app = Flask(__name__)
 
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
+	 logger.debug("From: %s\nchat_id: %d\nText: %s" %
+                (update.message.from_user,
+                 update.message.chat_id,
+                 update.message.text))
+
     update = telegram.Update.de_json(request.get_json(force=True), bot)
 
     chat_id = update.message.chat.id
