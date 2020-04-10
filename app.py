@@ -4,7 +4,8 @@ import os
 import json
 
 global TOKEN 
-TOKEN = os.environ['TOKEN']
+TOKEN = '1135698268:AAEipBbNjrsXeTQwjhf8M9TzJL0ADHAvFho'
+# TOKEN = os.environ['TOKEN']
 global bot 
 bot = telegram.Bot(token=TOKEN)
 
